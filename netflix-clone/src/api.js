@@ -1,0 +1,51 @@
+const API_KEY = "184c9bfaef76ac7905e30699e1fec6e8";
+
+const categories = [
+    {
+        name: "trending",
+        title: "Em alta",
+        path: `/trending/all/week?api_key=${API_KEY}&language=pt-BR`,
+    },
+
+    {
+        name: "NetflixOriginals",
+        title: "Originais Netflix",
+        path: `/dicover/tv?api_key=${API_KEY}&with_networks=213`,
+    },
+    
+    {
+        name: "toprated",
+        title: "Populares",
+        path: `/movie/toprated?api_key=${API_KEY}&language=pt-BR`,
+    },
+   
+    {
+        name: "comedy",
+        title: "comedia",
+        path: `/dicover/tv?api_key=${API_KEY}&with_genres=35`,
+    },
+   
+    {
+        name: "romances",
+        title: "Romances",
+        path: `/dicover/tv?api_key=${API_KEY}&with_genres=1074`,
+    },
+   
+    {
+        name: "documentaries",
+        title: "documentario",
+        path: `/dicover/tv?api_key=${API_KEY}&with_genres=99`,
+    },
+];
+
+export const getMovies = async (path) => {
+    try{
+        let url = `https://api.themoviedb.org/3${path}`;
+        const response = await fetch(url);
+        return await response.json();
+    }   catch (error) {
+        console.log("error getMovies: ",error);
+    }
+};
+
+export default categories;

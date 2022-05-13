@@ -1,6 +1,7 @@
 import './App.css';
-import Row from './Components/Row';
-import categories from './api';
+import Row from './Components/Row.js';
+import categories from './api.js';
+
 function App() {
   return (
     <div className="App">
@@ -8,7 +9,12 @@ function App() {
      {/*Destaque*/}
      {/*Em alta*/}
      {categories.map((category) => {
-      return <Row key={index} />;
+      return (
+        <Row 
+          key={category.name} 
+          title = {category.title} 
+          path={category.path} />
+      );
      })}
      
     </div>
