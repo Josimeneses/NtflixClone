@@ -1,8 +1,9 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useState} from 'react'
 import { getMovies } from '../api.js';
+import './Row.css';
 
 const imageHost = "https://image.tmdb.org/t/p/original/";
-function Row ({ title,path }) {
+function Row ({ title, path }) {
     const [movies, setMovies]= React.useState([]);
     
     const fetchMovies = async (_path) =>{
@@ -10,8 +11,10 @@ function Row ({ title,path }) {
            const data = await getMovies (_path);
            console.log("data",data);
            setMovies(data?.results);
-       }catch (error){}
-        console.log ("fetchMovies error:", error);
+       }catch (error){
+           console.log ("fetchMovies error:", error);
+        }
+        
     };
 
     useEffect(() => {
@@ -26,7 +29,9 @@ function Row ({ title,path }) {
         <div className="row-cards">
             {movies?.map(movie =>{
                 return(
-                    <img key={movie.id} 
+                    <img 
+                    className="movie-card"
+                    key={movie.id} 
                     src={`${imageHost}${movie.poster_path}`} 
                     alt={movie.name}></img>
                 )
