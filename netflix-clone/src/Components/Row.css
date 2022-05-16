@@ -1,6 +1,6 @@
 .row-container {
     margin-left: 20px;
-    color: #fff;
+    color: white;
 }
 
 .row-cards{
@@ -10,11 +10,9 @@
     padding: 20px;
 }
 
-.row-cards:-webkit-scrollbar{
+.row-cards::-webkit-scrollbar {
     display: none;
 }
-
-
 
 .movie-card{
     width: 100%;

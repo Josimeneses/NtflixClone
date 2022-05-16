@@ -3,7 +3,7 @@ import { getMovies } from '../api.js';
 import './Row.css';
 
 const imageHost = "https://image.tmdb.org/t/p/original/";
-function Row ({ title, path }) {
+function Row ({ title, path, isLarge }) {
     const [movies, setMovies]= React.useState([]);
     
     const fetchMovies = async (_path) =>{
@@ -18,8 +18,7 @@ function Row ({ title, path }) {
     };
 
     useEffect(() => {
-      //first effect
-       fetchMovies(path);
+        fetchMovies(path);
     }, [path]);
     
 
